@@ -1,5 +1,6 @@
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace Belajar_Inventori
 {
@@ -33,6 +34,8 @@ namespace Belajar_Inventori
                 {
                     dataGridView1.Rows[r.Index].HeaderCell.Value = (r.Index + 1).ToString();
                 }
+                dataGridView1.Columns[3].DefaultCellStyle.Format = "C2";
+                dataGridView1.Columns[3].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
             }
             catch (Exception ex)
             {
