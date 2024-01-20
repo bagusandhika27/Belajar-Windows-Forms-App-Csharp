@@ -78,9 +78,9 @@ namespace Belajar_Inventori
                     loadTable();
                     clearText();
                 }
-                catch
+                catch (Exception ex)
                 {
-
+                    MessageBox.Show(ex.ToString());
                 }
                 finally
                 {
