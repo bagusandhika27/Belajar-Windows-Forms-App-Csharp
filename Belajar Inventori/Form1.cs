@@ -46,6 +46,7 @@ namespace Belajar_Inventori
 
         void clearText()
         {
+            autoID();
             textBox2.Text = "";
             textBox3.Text = "";
             textBox4.Text = "";
