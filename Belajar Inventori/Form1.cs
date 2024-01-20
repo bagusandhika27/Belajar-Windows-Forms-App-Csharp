@@ -44,9 +44,39 @@ namespace Belajar_Inventori
             }
         }
 
+        void clearText()
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             loadTable();
+            clearText();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            clearText();
         }
     }
 }
