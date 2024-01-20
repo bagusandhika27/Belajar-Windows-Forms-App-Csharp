@@ -61,7 +61,32 @@ namespace Belajar_Inventori
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text.Trim() == "" || textBox2.Text.Trim() == "" || textBox3.Text.Trim() == "" || textBox4.Text.Trim() == "" || textBox5.Text.Trim() == "")
+            {
+                MessageBox.Show("Data Belum Lengkap!", "Informasi");
+            }
+            else
+            {
+                SqlConnection conn = Konn.GetConn();
 
+                try
+                {
+                    cmd = new SqlCommand("INSERT INTO barang VALUES ('" + textBox1.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', " + textBox4.Text + ", " + textBox5.Text + ")", conn);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Data " + textBox1.Text + " Berhasil Ditambah!", "Informasi");
+                    loadTable();
+                    clearText();
+                }
+                catch
+                {
+
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
