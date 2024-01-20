@@ -84,6 +84,7 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(100, 23);
             textBox4.TabIndex = 4;
+            textBox4.KeyPress += textBox4_KeyPress;
             // 
             // textBox5
             // 
@@ -91,6 +92,7 @@
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(100, 23);
             textBox5.TabIndex = 5;
+            textBox5.KeyPress += textBox5_KeyPress;
             // 
             // button1
             // 
