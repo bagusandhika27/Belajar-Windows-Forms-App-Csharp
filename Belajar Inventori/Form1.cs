@@ -91,12 +91,46 @@ namespace Belajar_Inventori
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text.Trim() == "" || textBox2.Text.Trim() == "" || textBox3.Text.Trim() == "" || textBox4.Text.Trim() == "" || textBox5.Text.Trim() == "")
+            {
+                MessageBox.Show("Data Belum Lengkap!", "Informasi");
+            }
+            else
+            {
+                SqlConnection conn = Konn.GetConn();
+                cmd = new SqlCommand("SELECT * FROM barang WHERE kodebarang = '" + textBox1.Text + "'", conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
 
+                try
+                {
+                    if (reader.Read())
+                    {
+                        cmd = new SqlCommand("UPDATE barang SET namabarang = '" + textBox2.Text + "', satuan = '" + textBox3.Text + "', harga = " + textBox4.Text + ", stok = " + textBox5.Text + " WHERE kodebarang = '" + textBox1.Text + "'", conn);
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Data Berhasil Diubah!", "Informasi");
+                        loadTable();
+                        clearText();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Barang Tidak Ditemukan!", "Informasi");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
