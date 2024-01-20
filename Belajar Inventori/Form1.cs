@@ -77,7 +77,7 @@ namespace Belajar_Inventori
             {
                 MessageBox.Show(ex.ToString());
             }
-            finally 
+            finally
             {
                 conn.Close();
             }
@@ -201,6 +201,11 @@ namespace Belajar_Inventori
             textBox3.Text = dataGridView1.Rows[e.RowIndex].Cells["satuan"].Value.ToString();
             textBox4.Text = dataGridView1.Rows[e.RowIndex].Cells["harga"].Value.ToString();
             textBox5.Text = dataGridView1.Rows[e.RowIndex].Cells["stok"].Value.ToString();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            textBox1.ReadOnly = true;
         }
     }
 }
