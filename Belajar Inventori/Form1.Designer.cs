@@ -54,6 +54,7 @@
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(870, 285);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // textBox1
             // 

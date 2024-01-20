@@ -103,5 +103,15 @@ namespace Belajar_Inventori
         {
             clearText();
         }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.CurrentRow.Selected = true;
+            textBox1.Text = dataGridView1.Rows[e.RowIndex].Cells["kodebarang"].Value.ToString();
+            textBox2.Text = dataGridView1.Rows[e.RowIndex].Cells["namabarang"].Value.ToString();
+            textBox3.Text = dataGridView1.Rows[e.RowIndex].Cells["satuan"].Value.ToString();
+            textBox4.Text = dataGridView1.Rows[e.RowIndex].Cells["harga"].Value.ToString();
+            textBox5.Text = dataGridView1.Rows[e.RowIndex].Cells["stok"].Value.ToString();
+        }
     }
 }
