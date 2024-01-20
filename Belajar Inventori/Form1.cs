@@ -130,7 +130,32 @@ namespace Belajar_Inventori
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
+            if (textBox1.Text.Trim() == "" || textBox2.Text.Trim() == "" || textBox3.Text.Trim() == "" || textBox4.Text.Trim() == "" || textBox5.Text.Trim() == "")
+            {
+                MessageBox.Show("Data Belum Lengkap!", "Informasi");
+            }
+            else
+            {
+                SqlConnection conn = Konn.GetConn();
+
+                try
+                {
+                    cmd = new SqlCommand("DELETE FROM barang WHERE kodebarang = '" + textBox1.Text + "'", conn);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Data " + textBox1.Text + " Berhasil Dihapus!", "Informasi");
+                    loadTable();
+                    clearText();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
