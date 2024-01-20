@@ -135,12 +135,19 @@ namespace Belajar_Inventori
                 {
                     if (reader.Read())
                     {
-                        cmd = new SqlCommand("UPDATE barang SET namabarang = '" + textBox2.Text + "', satuan = '" + textBox3.Text + "', harga = " + textBox4.Text + ", stok = " + textBox5.Text + " WHERE kodebarang = '" + textBox1.Text + "'", conn);
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Data Berhasil Diubah!", "Informasi");
-                        loadTable();
-                        clearText();
-                        autoID();
+                        DialogResult dr = MessageBox.Show("Data " + textBox1.Text + " Akan Diubah.\n\nData Sebelumnya\nNama Barang = " + reader["namabarang"].ToString() + "\nSatuan = " + reader["satuan"].ToString() + "\nHarga = " + reader["harga"].ToString() + "\nStok = " + reader["stok"].ToString() + "\n\nData Saat ini\nNama Barang = " + textBox2.Text + "\nSatuan = " + textBox3.Text + "\nHarga = " + textBox4.Text + "\nStok = " + textBox5.Text + "\n\nIngin Melanjutkan?", "Konfirmasi", MessageBoxButtons.YesNo);
+                        if (dr == DialogResult.Yes)
+                        {
+                            cmd = new SqlCommand("UPDATE barang SET namabarang = '" + textBox2.Text + "', satuan = '" + textBox3.Text + "', harga = " + textBox4.Text + ", stok = " + textBox5.Text + " WHERE kodebarang = '" + textBox1.Text + "'", conn);
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Data Berhasil Diubah!", "Informasi");
+                            loadTable();
+                            clearText();
+                            autoID();
+                        }
+                        else
+                        {
+                        }
                     }
                     else
                     {
@@ -170,13 +177,20 @@ namespace Belajar_Inventori
 
                 try
                 {
-                    cmd = new SqlCommand("DELETE FROM barang WHERE kodebarang = '" + textBox1.Text + "'", conn);
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Data " + textBox1.Text + " Berhasil Dihapus!", "Informasi");
-                    loadTable();
-                    clearText();
-                    autoID();
+                    DialogResult dr = MessageBox.Show("Data " + textBox1.Text + " Akan Dihapus.\n\nIngin Melanjutkan?", "Konfirmasi", MessageBoxButtons.YesNo);
+                    if (dr == DialogResult.Yes)
+                    {
+                        cmd = new SqlCommand("DELETE FROM barang WHERE kodebarang = '" + textBox1.Text + "'", conn);
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Data " + textBox1.Text + " Berhasil Dihapus!", "Informasi");
+                        loadTable();
+                        clearText();
+                        autoID();
+                    }
+                    else
+                    {
+                    }
                 }
                 catch (Exception ex)
                 {
