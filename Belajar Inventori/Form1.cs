@@ -46,22 +46,53 @@ namespace Belajar_Inventori
 
         void clearText()
         {
-            textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
             textBox4.Text = "";
             textBox5.Text = "";
         }
 
+        void autoID()
+        {
+            SqlConnection conn = Konn.GetConn();
+
+            try
+            {
+                cmd = new SqlCommand("SELECT MAX(kodebarang) FROM barang", conn);
+                conn.Open();
+                var currentID = cmd.ExecuteScalar() as string;
+
+                if (currentID == null)
+                {
+                    textBox1.Text = "KD001";
+                }
+                else
+                {
+                    int intval = int.Parse(currentID.Substring(2, 3));
+                    intval++;
+                    textBox1.Text = String.Format("KD{0:000}", intval);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally 
+            {
+                conn.Close();
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             loadTable();
             clearText();
+            autoID();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Trim() == "" || textBox2.Text.Trim() == "" || textBox3.Text.Trim() == "" || textBox4.Text.Trim() == "" || textBox5.Text.Trim() == "")
+            if (textBox2.Text.Trim() == "" || textBox3.Text.Trim() == "" || textBox4.Text.Trim() == "" || textBox5.Text.Trim() == "")
             {
                 MessageBox.Show("Data Belum Lengkap!", "Informasi");
             }
@@ -77,21 +108,18 @@ namespace Belajar_Inventori
                     MessageBox.Show("Data " + textBox1.Text + " Berhasil Ditambah!", "Informasi");
                     loadTable();
                     clearText();
+                    autoID();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
-                }
-                finally
-                {
-                    conn.Close();
                 }
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Trim() == "" || textBox2.Text.Trim() == "" || textBox3.Text.Trim() == "" || textBox4.Text.Trim() == "" || textBox5.Text.Trim() == "")
+            if (textBox2.Text.Trim() == "" || textBox3.Text.Trim() == "" || textBox4.Text.Trim() == "" || textBox5.Text.Trim() == "")
             {
                 MessageBox.Show("Data Belum Lengkap!", "Informasi");
             }
@@ -111,6 +139,7 @@ namespace Belajar_Inventori
                         MessageBox.Show("Data Berhasil Diubah!", "Informasi");
                         loadTable();
                         clearText();
+                        autoID();
                     }
                     else
                     {
@@ -130,7 +159,7 @@ namespace Belajar_Inventori
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Trim() == "" || textBox2.Text.Trim() == "" || textBox3.Text.Trim() == "" || textBox4.Text.Trim() == "" || textBox5.Text.Trim() == "")
+            if (textBox2.Text.Trim() == "" || textBox3.Text.Trim() == "" || textBox4.Text.Trim() == "" || textBox5.Text.Trim() == "")
             {
                 MessageBox.Show("Data Belum Lengkap!", "Informasi");
             }
@@ -146,6 +175,7 @@ namespace Belajar_Inventori
                     MessageBox.Show("Data " + textBox1.Text + " Berhasil Dihapus!", "Informasi");
                     loadTable();
                     clearText();
+                    autoID();
                 }
                 catch (Exception ex)
                 {
