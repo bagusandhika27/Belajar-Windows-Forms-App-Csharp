@@ -62,7 +62,7 @@ namespace Belajar_Inventori
 
             try
             {
-                cmd = new SqlCommand("SELECT MAX(kodebarang) FROM barang", conn);
+                cmd = new SqlCommand("SELECT MAX(kode) FROM barang", conn);
                 conn.Open();
                 var currentID = cmd.ExecuteScalar() as string;
 
@@ -130,7 +130,7 @@ namespace Belajar_Inventori
             else
             {
                 SqlConnection conn = Konn.GetConn();
-                cmd = new SqlCommand("SELECT * FROM barang WHERE kodebarang = '" + textBox1.Text + "'", conn);
+                cmd = new SqlCommand("SELECT * FROM barang WHERE kode = '" + textBox1.Text + "'", conn);
                 conn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
 
@@ -138,10 +138,10 @@ namespace Belajar_Inventori
                 {
                     if (reader.Read())
                     {
-                        DialogResult dr = MessageBox.Show("Data " + textBox1.Text + " Akan Diubah.\n\nData Sebelumnya\nNama Barang = " + reader["namabarang"].ToString() + "\nSatuan = " + reader["satuan"].ToString() + "\nHarga = " + reader["harga"].ToString() + "\nStok = " + reader["stok"].ToString() + "\n\nData Saat ini\nNama Barang = " + textBox2.Text + "\nSatuan = " + textBox3.Text + "\nHarga = " + textBox4.Text + "\nStok = " + textBox5.Text + "\n\nIngin Melanjutkan?", "Konfirmasi", MessageBoxButtons.YesNo);
+                        DialogResult dr = MessageBox.Show("Data " + textBox1.Text + " Akan Diubah.\n\nData Sebelumnya\nNama Barang = " + reader["nama"].ToString() + "\nSatuan = " + reader["satuan"].ToString() + "\nHarga = " + reader["harga"].ToString() + "\nStok = " + reader["stok"].ToString() + "\n\nData Saat ini\nNama Barang = " + textBox2.Text + "\nSatuan = " + textBox3.Text + "\nHarga = " + textBox4.Text + "\nStok = " + textBox5.Text + "\n\nIngin Melanjutkan?", "Konfirmasi", MessageBoxButtons.YesNo);
                         if (dr == DialogResult.Yes)
                         {
-                            cmd = new SqlCommand("UPDATE barang SET namabarang = '" + textBox2.Text + "', satuan = '" + textBox3.Text + "', harga = " + textBox4.Text + ", stok = " + textBox5.Text + " WHERE kodebarang = '" + textBox1.Text + "'", conn);
+                            cmd = new SqlCommand("UPDATE barang SET nama = '" + textBox2.Text + "', satuan = '" + textBox3.Text + "', harga = " + textBox4.Text + ", stok = " + textBox5.Text + " WHERE kode = '" + textBox1.Text + "'", conn);
                             cmd.ExecuteNonQuery();
                             MessageBox.Show("Data Berhasil Diubah!", "Informasi");
                             loadTable();
@@ -183,7 +183,7 @@ namespace Belajar_Inventori
                     DialogResult dr = MessageBox.Show("Data " + textBox1.Text + " Akan Dihapus.\n\nIngin Melanjutkan?", "Konfirmasi", MessageBoxButtons.YesNo);
                     if (dr == DialogResult.Yes)
                     {
-                        cmd = new SqlCommand("DELETE FROM barang WHERE kodebarang = '" + textBox1.Text + "'", conn);
+                        cmd = new SqlCommand("DELETE FROM barang WHERE kode = '" + textBox1.Text + "'", conn);
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Data " + textBox1.Text + " Berhasil Dihapus!", "Informasi");
@@ -214,8 +214,8 @@ namespace Belajar_Inventori
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.CurrentRow.Selected = true;
-            textBox1.Text = dataGridView1.Rows[e.RowIndex].Cells["kodebarang"].Value.ToString();
-            textBox2.Text = dataGridView1.Rows[e.RowIndex].Cells["namabarang"].Value.ToString();
+            textBox1.Text = dataGridView1.Rows[e.RowIndex].Cells["kode"].Value.ToString();
+            textBox2.Text = dataGridView1.Rows[e.RowIndex].Cells["nama"].Value.ToString();
             textBox3.Text = dataGridView1.Rows[e.RowIndex].Cells["satuan"].Value.ToString();
             textBox4.Text = dataGridView1.Rows[e.RowIndex].Cells["harga"].Value.ToString();
             textBox5.Text = dataGridView1.Rows[e.RowIndex].Cells["stok"].Value.ToString();

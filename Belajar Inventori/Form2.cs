@@ -26,7 +26,7 @@ namespace Belajar_Inventori
 
             try
             {
-                cmd = new SqlCommand("SELECT MAX(kodebarang) FROM barang", conn);
+                cmd = new SqlCommand("SELECT MAX(kode) FROM barang", conn);
                 conn.Open();
                 var currentID = cmd.ExecuteScalar() as string;
 
