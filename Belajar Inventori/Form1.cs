@@ -241,5 +241,13 @@ namespace Belajar_Inventori
                 e.Handled = true;
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var tambahShow = new Form2();
+            tambahShow.ShowDialog();
+            this.Close();
+        }
     }
 }

@@ -190,6 +190,7 @@
             button5.TabIndex = 15;
             button5.Text = "Tambah Barang";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // button6
             // 
