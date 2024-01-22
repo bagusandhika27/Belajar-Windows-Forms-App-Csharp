@@ -140,6 +140,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Info;
             ClientSize = new Size(364, 261);
             Controls.Add(button3);
             Controls.Add(textBox4);
@@ -153,6 +154,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "Form2";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Tambah Barang";
             Load += Form2_Load;
             ResumeLayout(false);
