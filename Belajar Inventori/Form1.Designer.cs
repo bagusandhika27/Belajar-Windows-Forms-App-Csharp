@@ -43,13 +43,16 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
+            button5 = new Button();
+            button6 = new Button();
+            button7 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 114);
+            dataGridView1.Location = new Point(12, 154);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(870, 285);
@@ -179,12 +182,42 @@
             label5.TabIndex = 14;
             label5.Text = "Stok";
             // 
+            // button5
+            // 
+            button5.Location = new Point(11, 113);
+            button5.Name = "button5";
+            button5.Size = new Size(101, 23);
+            button5.TabIndex = 15;
+            button5.Text = "Tambah Barang";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(118, 113);
+            button6.Name = "button6";
+            button6.Size = new Size(74, 23);
+            button6.TabIndex = 16;
+            button6.Text = "Pembelian";
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(198, 113);
+            button7.Name = "button7";
+            button7.Size = new Size(75, 23);
+            button7.TabIndex = 17;
+            button7.Text = "Penjualan";
+            button7.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Info;
-            ClientSize = new Size(894, 411);
+            ClientSize = new Size(894, 451);
+            Controls.Add(button7);
+            Controls.Add(button6);
+            Controls.Add(button5);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -226,5 +259,8 @@
         private Label label3;
         private Label label4;
         private Label label5;
+        private Button button5;
+        private Button button6;
+        private Button button7;
     }
 }
