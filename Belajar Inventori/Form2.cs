@@ -15,6 +15,50 @@ namespace Belajar_Inventori
 {
     public partial class Form2 : Form
     {
+        private SqlCommand cmd;
+        private DataSet ds;
+        private SqlDataAdapter da;
+        Koneksi Konn = new Koneksi();
+
+        void autoID()
+        {
+            SqlConnection conn = Konn.GetConn();
+
+            try
+            {
+                cmd = new SqlCommand("SELECT MAX(kodebarang) FROM barang", conn);
+                conn.Open();
+                var currentID = cmd.ExecuteScalar() as string;
+
+                if (currentID == null)
+                {
+                    textBox1.Text = "KD001";
+                }
+                else
+                {
+                    int intval = int.Parse(currentID.Substring(2, 3));
+                    intval++;
+                    textBox1.Text = String.Format("KD{0:000}", intval);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        void clearText()
+        {
+            autoID();
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+        }
+
         public Form2()
         {
             InitializeComponent();
