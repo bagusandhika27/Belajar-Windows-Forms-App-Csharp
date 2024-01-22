@@ -12,7 +12,7 @@ namespace Belajar_Inventori
         public SqlConnection GetConn() 
         {
             SqlConnection Conn = new SqlConnection();
-            Conn.ConnectionString = "Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = master; Integrated Security = True; initial catalog = belajarcsharp; integrated security = True; MultipleActiveResultSets = True";
+            Conn.ConnectionString = "Data Source = (localdb)\\MSSQLLocalDB; Integrated Security = True; initial catalog = belajarcsharp; MultipleActiveResultSets = True";
             return Conn;
         }
     }
