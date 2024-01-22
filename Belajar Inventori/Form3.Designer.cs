@@ -136,6 +136,7 @@
             Name = "Form3";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pembelian";
+            Load += Form3_Load;
             ResumeLayout(false);
             PerformLayout();
         }

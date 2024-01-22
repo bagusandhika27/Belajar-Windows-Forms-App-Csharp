@@ -50,9 +50,24 @@ namespace Belajar_Inventori
             }
         }
 
+        void cbBarang()
+        {
+            SqlConnection conn = Konn.GetConn();
+            cmd = new SqlCommand("SELECT * FROM barang", conn);
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            comboBox1.Text = "--- Pilih Barang ---";
+            while (reader.Read())
+            {
+                comboBox1.Items.Add(reader["kode"] + " - " + reader["nama"]);
+            }
+            conn.Close();
+        }
+
         void clearText()
         {
             autoID();
+            cbBarang();
             textBox2.Text = "";
         }
 
@@ -61,19 +76,47 @@ namespace Belajar_Inventori
             InitializeComponent();
         }
 
+        private void Form3_Load(object sender, EventArgs e)
+        {
+            clearText();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-
+            SqlConnection conn = Konn.GetConn();
+            if (comboBox1.Text == "--- Pilih Barang ---" || textBox2.Text.Trim() == "")
+            {
+                MessageBox.Show("Data Belum Lengkap!", "Informasi");
+            }
+            else
+            {
+                string kodebrg = comboBox1.Text.Substring(0, 5);
+                cmd = new SqlCommand("SELECT * FROM barang WHERE kode = '" + kodebrg + "'", conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                int stoklama = int.Parse(reader["stok"].ToString());
+                int stokbaru = int.Parse(textBox2.Text.Trim()) + stoklama;
+                cmd = new SqlCommand("INSERT INTO pembelian VALUES ('" + textBox1.Text + "', '" + kodebrg + "', " + textBox2.Text.Trim() + ")", conn);
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand("UPDATE barang SET stok = " + stokbaru + "WHERE kode = '" + kodebrg + "'", conn);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Data " + textBox1.Text + " Berhasil Ditambah!", "Informasi");
+                clearText();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            clearText();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-        }
+            this.Hide();
+            var homeShow = new Form1();
+            homeShow.ShowDialog();
+            this.Close();
+        }        
     }
 }
