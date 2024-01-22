@@ -249,5 +249,13 @@ namespace Belajar_Inventori
             tambahShow.ShowDialog();
             this.Close();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var buyShow = new Form3();
+            buyShow.ShowDialog();
+            this.Close();
+        }
     }
 }

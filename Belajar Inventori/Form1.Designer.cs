@@ -200,6 +200,7 @@
             button6.TabIndex = 16;
             button6.Text = "Pembelian";
             button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // button7
             // 

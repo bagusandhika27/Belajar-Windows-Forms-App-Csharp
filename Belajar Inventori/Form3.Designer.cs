@@ -96,6 +96,7 @@
             button3.TabIndex = 18;
             button3.Text = "Home";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -105,6 +106,7 @@
             button2.TabIndex = 17;
             button2.Text = "Clear";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -114,11 +116,13 @@
             button1.TabIndex = 16;
             button1.Text = "Simpan";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // Form3
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Info;
             ClientSize = new Size(364, 261);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -130,6 +134,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "Form3";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pembelian";
             ResumeLayout(false);
             PerformLayout();
