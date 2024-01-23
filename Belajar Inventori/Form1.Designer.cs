@@ -210,6 +210,7 @@
             button7.TabIndex = 17;
             button7.Text = "Penjualan";
             button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // Form1
             // 
