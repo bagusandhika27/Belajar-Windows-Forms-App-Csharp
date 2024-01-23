@@ -47,6 +47,7 @@
             button3.TabIndex = 27;
             button3.Text = "Home";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -56,6 +57,7 @@
             button2.TabIndex = 26;
             button2.Text = "Clear";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -65,6 +67,7 @@
             button1.TabIndex = 25;
             button1.Text = "Simpan";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // comboBox1
             // 
