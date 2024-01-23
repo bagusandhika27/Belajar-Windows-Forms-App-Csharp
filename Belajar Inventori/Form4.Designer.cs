@@ -83,6 +83,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(185, 23);
             textBox2.TabIndex = 23;
+            textBox2.KeyPress += textBox2_KeyPress;
             // 
             // textBox1
             // 
@@ -90,6 +91,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(185, 23);
             textBox1.TabIndex = 22;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label3
             // 

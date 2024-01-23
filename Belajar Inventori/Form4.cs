@@ -110,7 +110,7 @@ namespace Belajar_Inventori
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Data " + textBox1.Text + " Berhasil Ditambah!", "Informasi");
                     clearText();
-                }                
+                }
             }
         }
 
@@ -125,6 +125,19 @@ namespace Belajar_Inventori
             var homeShow = new Form1();
             homeShow.ShowDialog();
             this.Close();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            textBox1.ReadOnly = true;
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
