@@ -18,6 +18,11 @@ namespace Belajar_Inventori
         private SqlDataAdapter da;
         Koneksi Konn = new Koneksi();
 
+        private const int CB_SETCUEBANNER = 0x1703;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
+        private static extern int SendMessage(IntPtr hWnd, int msg, int wParam, [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPWStr)] string lParam);
+
         void autoID()
         {
             SqlConnection conn = Konn.GetConn();
@@ -55,7 +60,8 @@ namespace Belajar_Inventori
             cmd = new SqlCommand("SELECT * FROM barang", conn);
             conn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
-            comboBox1.Text = "--- Pilih Barang ---";
+            comboBox1.Items.Clear();
+            SendMessage(this.comboBox1.Handle, CB_SETCUEBANNER, 0, "--- Pilih Barang ---");
             while (reader.Read())
             {
                 comboBox1.Items.Add(reader["kode"] + " - " + reader["nama"]);
@@ -83,7 +89,7 @@ namespace Belajar_Inventori
         private void button1_Click(object sender, EventArgs e)
         {
             SqlConnection conn = Konn.GetConn();
-            if (comboBox1.Text == "--- Pilih Barang ---" || textBox2.Text.Trim() == "")
+            if (comboBox1.SelectedIndex == -1 || textBox2.Text.Trim() == "")
             {
                 MessageBox.Show("Data Belum Lengkap!", "Informasi");
             }
